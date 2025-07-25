@@ -1,0 +1,201 @@
+.usuarios-container {
+    padding: 2rem;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f9f9f9;
+    min-height: 100vh;
+    padding-left: 260px;
+  }
+  
+  .usuarios-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .usuarios-header h2 {
+    font-size: 1.8rem;
+    color: #333;
+  }
+  
+  .btn-add {
+    padding: 0.5rem 1.2rem;
+    background-color: #0066cc;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  
+  .btn-add:hover {
+    background-color: #004c99;
+  }
+  
+  .input-search {
+    width: 100%;
+    padding: 0.6rem 1rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+  }
+  
+  .usuarios-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  }
+  
+  .usuarios-table th,
+  .usuarios-table td {
+    text-align: left;
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .usuarios-table th {
+    background-color: #f1f1f1;
+    color: #444;
+  }
+  
+  .btn-editar, .btn-remover {
+    padding: 0.4rem 0.8rem;
+    margin-right: 0.5rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+  }
+  
+  .btn-editar {
+    background-color: #ffaa00;
+    color: white;
+  }
+  
+  .btn-editar:hover {
+    background-color: #e69500;
+  }
+  
+  .btn-remover {
+    background-color: #d9534f;
+    color: white;
+  }
+  
+  .btn-remover:hover {
+    background-color: #c9302c;
+  }
+  
+  .no-results {
+    text-align: center;
+    padding: 1.5rem;
+    color: #888;
+  }
+  
+/* Modal Overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(3px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    position: relative;
+    animation: slideIn 0.3s ease-out;
+  }
+  
+  /* Título e campos */
+  .modal-content h2 {
+    margin-top: 0;
+    font-size: 1.6rem;
+    color: #333;
+    text-align: center;
+  }
+  
+  /* Form inputs */
+  .modal-content input,
+  .modal-content select {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border 0.2s;
+  }
+  
+  .modal-content input:focus,
+  .modal-content select:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+  
+  /* Botões */
+  .modal-content button {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.2s ease;
+  }
+  
+  .btn-salvar {
+    background-color: #28a745;
+    color: white;
+    margin-right: 0.5rem;
+  }
+  
+  .btn-salvar:hover {
+    background-color: #218838;
+  }
+  
+  .btn-cancelar {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .btn-cancelar:hover {
+    background-color: #c82333;
+  }
+  
+  /* Animações */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateY(-30px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
