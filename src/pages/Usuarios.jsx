@@ -26,7 +26,7 @@ const Usuarios = () => {
           return;
         }
     
-        axios.post('https://campo-isptec.onrender.com/api/admin/getUsers', novoUsuario)
+        axios.post('https://campo-isptec.onrender.com/api/register', novoUsuario)
         .then(response => {
             console.log('Usuário salvo com sucesso:', response.data);
             setUsuarios(prev => [...prev, response.data]); // atualiza a tabela
@@ -163,7 +163,7 @@ useEffect(() => {
     <tr>
       <th>Nome</th>
       <th>Email</th>
-      <th>Tipo</th>
+      <th>Número de Estudante</th>
       <th>Ações</th>
     </tr>
   </thead>

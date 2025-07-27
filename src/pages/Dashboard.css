@@ -77,8 +77,8 @@
    */
 
    .dashboard-container {
-    padding: 30px;
-    padding-left: 260px;
+    padding: 20px;
+    /* padding-left: 260px; */
     background-color: #F5F7FA;
     min-height: 100vh;
     font-family: 'Segoe UI', sans-serif;

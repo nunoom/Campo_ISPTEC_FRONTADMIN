@@ -68,6 +68,7 @@ max-width: 100%;
     border-bottom: 1px solid #eee;
     min-width: 120px;
     width: 10%;
+    color: #444;
   }
   .selected-row {
     background-color: #e9d558 100px;

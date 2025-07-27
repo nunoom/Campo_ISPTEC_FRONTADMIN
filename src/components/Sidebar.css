@@ -13,12 +13,16 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   } */
 .isptecLogo{
+  width: 90px;
+  height: 100px;
   align-items: center;
+  background-color: white;
+  border-radius: 30px;
 }
   .sidebar {
     width: 240px;
     /* background-color: #1e293b; */
-    background-color: #e9d558;
+    background-color: #bd9105;
     color: #f1f5f9; /* Branco suave */
     min-height: 100vh;
     padding: 20px 16px;

@@ -20,7 +20,7 @@
    .dashboard {
     flex: 1;
     padding: 30px;
-    padding-left: 260px; /* Alinhar com o header */
+    /* padding-left: 260px; */
     background-color: #f1f5f9;
     color: #1e293b;
   }
