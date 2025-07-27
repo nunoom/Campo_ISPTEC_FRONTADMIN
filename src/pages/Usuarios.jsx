@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 import './Usuarios.css';
 import api from '../services/api';
 import axios from 'axios';
+import AnimatedList from '../components/AnimatedList/AnimatedList';
+
+import { motion } from 'framer-motion';
+
 
 
 const Usuarios = () => {
@@ -22,7 +26,7 @@ const Usuarios = () => {
           return;
         }
     
-        axios.post('https://9967c7696c16.ngrok-free.app/api/register', novoUsuario)
+        axios.post('https://campo-isptec.onrender.com/api/admin/getUsers', novoUsuario)
         .then(response => {
             console.log('Usuário salvo com sucesso:', response.data);
             setUsuarios(prev => [...prev, response.data]); // atualiza a tabela
@@ -54,7 +58,7 @@ const Usuarios = () => {
 //       });
 //   }, []);
 useEffect(() => {
-    axios.get('https://9967c7696c16.ngrok-free.app/api/getUsers')
+    axios.get('https://campo-isptec.onrender.com/api/admin/getUsers')
       .then(response => {
         const data = response.data;
         if (Array.isArray(data)) {
@@ -73,6 +77,18 @@ useEffect(() => {
   const usuariosFiltrados = usuarios.filter((usuario) =>
     usuario.nomeCompleto.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  const items = usuariosFiltrados.map((usuario) => (
+    <tr key={usuario.id}>
+      <td>{usuario.nomeCompleto}</td>
+      <td>{usuario.fullemail}</td>
+      <td>{usuario.numeroEstudante}</td>
+      <td>
+        <button className="btn-editar">Editar</button>
+        <button className="btn-remover">Remover</button>
+      </td>
+    </tr>
+  ));
 
   return (
     <div className="usuarios-container">
@@ -140,35 +156,41 @@ useEffect(() => {
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
-
+      
       <table className="usuarios-table">
-        <thead>
-          <tr>
-            <th>Nome</th>
-            <th>Email</th>
-            <th>Tipo</th>
-            <th>Ações</th>
-          </tr>
-        </thead>
-        <tbody>
-          {usuariosFiltrados.map((usuario) => (
-            <tr key={usuario.id}>
-              <td>{usuario.nomeCompleto}</td>
-              <td>{usuario.fullemail}</td>
-              <td>{usuario.numeroEstudante}</td>
-              <td>
-                <button className="btn-editar">Editar</button>
-                <button className="btn-remover">Remover</button>
-              </td>
-            </tr>
-          ))}
-          {usuariosFiltrados.length === 0 && (
-            <tr>
-              <td colSpan="4" className="no-results">Nenhum usuário encontrado.</td>
-            </tr>
-          )}
-        </tbody>
-      </table>
+    <tbody>
+    <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Email</th>
+      <th>Tipo</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <AnimatedList
+    items={usuariosFiltrados}
+    onItemSelect={(item, index) => console.log(item, index)}
+    showGradients={true}
+    enableArrowNavigation={true}
+    displayScrollbar={true}
+    renderItem={(usuario, index, isSelected) => (
+      <tr key={usuario.id} className={isSelected ? "selected-row" : ""}>
+        <td>{usuario.nomeCompleto}</td>
+        <td>{usuario.fullemail}</td>
+        <td>{usuario.numeroEstudante}</td>
+        <td>
+          <button>Editar</button>
+          <button>Excluir</button>
+        </td>
+      </tr>
+    )}
+  />
+</tbody>
+</table>
+
+
+  
+
     </div>
   );
 };

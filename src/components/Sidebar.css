@@ -12,10 +12,13 @@
     box-shadow: 2px 0 12px rgba(0, 0, 0, 0.2);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   } */
-
+.isptecLogo{
+  align-items: center;
+}
   .sidebar {
     width: 240px;
-    background-color: #1e293b; /* Azul escuro da paleta */
+    /* background-color: #1e293b; */
+    background-color: #e9d558;
     color: #f1f5f9; /* Branco suave */
     min-height: 100vh;
     padding: 20px 16px;
@@ -28,6 +31,10 @@
   .sidebar-header {
     padding-bottom: 24px;
     border-bottom: 1px solid #334155;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
   }
   
   .sidebar-header h2 {

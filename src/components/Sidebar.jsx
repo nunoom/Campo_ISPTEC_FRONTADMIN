@@ -73,6 +73,7 @@ export default function Sidebar() {
   return (
     <aside className="sidebar">
       <div className="sidebar-header">
+        <img src="https://www.isptec.co.ao/public/assets/img/Logo_2.webp" alt="ISPTEC-Logo" height="45px" className='isptecLogo'/>
         <h2>Admin ISPTEC</h2>
       </div>
       <nav className="sidebar-nav">
