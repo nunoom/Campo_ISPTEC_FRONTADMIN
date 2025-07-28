@@ -1,0 +1,27 @@
+/* Exemplo no CSS do componente ou global */
+.login-wrapper {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.aurora-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* Aurora atrás */
+}
+
+form.form_container {
+  position: relative;
+  z-index: 1; /* Formulário acima */
+  background: rgba(255, 255, 255, 0.9); /* leve fundo branco */
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 400px;
+  margin: 0 auto;
+  top: 20%;
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import './Header.css';
 import { FiLogOut } from 'react-icons/fi';
+import Button from './ButtonStyled/ButtonStyled';
 
 export default function Header() {
   return (
@@ -16,7 +17,7 @@ export default function Header() {
           /> */}
           <button className="logout-button">
             <FiLogOut size={18} />
-            <span>Sair</span>
+            <Button />
           </button>
         </div>
       </div>
