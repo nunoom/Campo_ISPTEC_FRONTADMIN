@@ -12,6 +12,7 @@
   --border-color: #e9d558;
   --background-dark: #e9d558;
   color-scheme: light dark;
+  font-family: 'poppins';
 }
 
 .card-grid {

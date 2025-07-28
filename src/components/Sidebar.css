@@ -16,13 +16,16 @@
   width: 90px;
   height: 100px;
   align-items: center;
-  background-color: white;
+
   border-radius: 30px;
 }
+*{
+  font-family: 'poppins';
+}
   .sidebar {
-    width: 240px;
+    width: 280px;
     /* background-color: #1e293b; */
-    background-color: #bd9105;
+    background-color: #6c757d;
     color: #f1f5f9; /* Branco suave */
     min-height: 100vh;
     padding: 20px 16px;
@@ -79,13 +82,13 @@
   }
   
   .nav-item.active .nav-link {
-    background-color: #F1C40F; /* amarelo ISPTEC */
-    color: #1A254F; /* texto azul escuro */
+    background-color: #3a3c3e; /* amarelo ISPTEC */
+    color: #ffffff; /* texto azul escuro */
     font-weight: bold;
   }
   
   .nav-item.active .icon {
-    color: #1A254F;
+    color: #ffffff;
   }
   
   .icon {

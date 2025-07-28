@@ -6,6 +6,7 @@ import { useRef, useEffect, useCallback, useState } from "react";
 import { gsap } from "gsap";
 import "./MagicBento.css";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const DEFAULT_PARTICLE_COUNT = 12;
 const DEFAULT_SPOTLIGHT_RADIUS = 300;
@@ -15,37 +16,38 @@ const MOBILE_BREAKPOINT = 768;
 
 const cardData = [
   {
-    color: "#bd9105",
+    color: "#6c757d",
     title: "Campos",
     description: "Track user behavior",
     label: "Campos",
   },
   {
-    color: "#bd9105",
+    color: "#6c757d",
     title: "Dashboard",
     description: "Centralized data view",
     label: "Overview",
   },
   {
-    color: "#bd9105",
+    color: "#6c757d",
     title: "Collaboration",
     description: "Work together seamlessly",
     label: "Teamwork",
   },
   {
-    color: "#bd9105",
-    title: "Automation",
+    color: "#6c757d",
+    title: "Usuário",
     description: "Streamline workflows",
     label: "Efficiency",
+    route: "/campos",
   },
   {
-    color: "#bd9105",
+    color: "#6c757d",
     title: "Integration",
     description: "Connect favorite tools",
     label: "Connectivity",
   },
   {
-    color: "#bd9105",
+    color: "#6c757d",
     title: "Security",
     description: "Enterprise-grade protection",
     label: "Protection",
@@ -305,6 +307,63 @@ const ParticleCard = ({
         },
       );
     };
+    // const handleClick = (e, route) => {
+    //   const element = containerRef.current;
+    //   if (!element) return;
+    
+    //   const rect = element.getBoundingClientRect();
+    //   const x = e.clientX - rect.left;
+    //   const y = e.clientY - rect.top;
+    
+    //   const maxDistance = Math.max(
+    //     Math.hypot(x, y),
+    //     Math.hypot(x - rect.width, y),
+    //     Math.hypot(x, y - rect.height),
+    //     Math.hypot(x - rect.width, y - rect.height),
+    //   );
+    
+    //   const ripple = document.createElement("div");
+    //   ripple.style.cssText = `
+    //     position: absolute;
+    //     width: ${maxDistance * 2}px;
+    //     height: ${maxDistance * 2}px;
+    //     border-radius: 50%;
+    //     background: radial-gradient(circle, rgba(233, 213, 88, 0.4) 0%, rgba(233, 213, 88, 0.2) 30%, transparent 70%);
+    //     left: ${x - maxDistance}px;
+    //     top: ${y - maxDistance}px;
+    //     pointer-events: none;
+    //     z-index: 1000;
+    //   `;
+    
+    //   element.appendChild(ripple);
+    
+    //   gsap.fromTo(
+    //     ripple,
+    //     {
+    //       scale: 0,
+    //       opacity: 1,
+    //     },
+    //     {
+    //       scale: 1,
+    //       opacity: 0,
+    //       duration: 0.8,
+    //       ease: "power2.out",
+    //       onComplete: () => {
+    //         ripple.remove();
+    //         {cards.map((card, index) => (
+    //           <card
+    //             key={index}
+    //             onClick={(e) => handleClick(e, card.route)}
+    //           >
+    //             {card.title}
+    //           </card>
+    //         ))}
+            
+    //         if (route) navigate(route); // só navega se tiver rota
+    //       },
+    //     },
+    //   );
+    // };
 
     element.addEventListener("mouseenter", handleMouseEnter);
     element.addEventListener("mouseleave", handleMouseLeave);
@@ -558,6 +617,7 @@ const MagicBento = ({
                 enableTilt={enableTilt}
                 clickEffect={clickEffect}
                 enableMagnetism={enableMagnetism}
+                
               >
                 <div className="card__header">
                   <div className="card__label">{card.label}</div>

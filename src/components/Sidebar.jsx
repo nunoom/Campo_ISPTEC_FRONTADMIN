@@ -63,11 +63,11 @@ export default function Sidebar() {
   const location = useLocation();
 
   const menuItems = [
-    { label: 'Dashboard', icon: '🏠', path: '/' },
-    { label: 'Campos', icon: '👥', path: '/campos' },
-    { label: 'Usuários', icon: '📅', path: '/usuarios' },
-    { label: 'Reservas', icon: '📆', path: '/reserva' },
-    { label: 'Configurações', icon: '⚙️', path: '/configuracoes' }
+    { label: 'Dashboard', icon: '', path: '/' },
+    { label: 'Campos', icon: '', path: '/campos' },
+    { label: 'Usuários', icon: '', path: '/usuarios' },
+    { label: 'Reservas', icon: '', path: '/reserva' },
+    { label: 'Configurações', icon: '', path: '/configuracoes' }
   ];
 
   return (
