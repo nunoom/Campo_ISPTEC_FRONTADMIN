@@ -23,7 +23,7 @@ max-width: 100%;
   
   .btn-add {
     padding: 0.5rem 1.2rem;
-    background-color: #fafec1;
+    background-color: #ffaa00;
     color: white;
     border: none;
     border-radius: 6px;
@@ -43,6 +43,8 @@ max-width: 100%;
     border: 1px solid #ccc;
     border-radius: 6px;
     font-size: 1rem;
+    color: #444;
+    background-color: #f9f9f9;
   }
   
   /* .usuarios-table {
@@ -71,10 +73,10 @@ max-width: 100%;
     color: #444;
   }
   .selected-row {
-    background-color: #e9d558 100px;
-    border-left: 4px solid #ffab07;
-    /* box-shadow: inset 0 0 5px rgba(0, 123, 255, 0.2); */
-    box-shadow: inset 0 0 5px #e9d558;
+    /* background-color: #e9d558 100px; */
+    border-left: 4px solid #ffaa00;
+    box-shadow: inset 0 0 5px rgba(0, 123, 255, 0.2);
+    box-shadow: inset 0 0 2px #e9d558;
     font-weight: 500;
     
   }
@@ -225,3 +227,62 @@ max-width: 100%;
     }
   }
   
+
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+  }
+  /* css para modal editar */
+  .modal {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    width: 400px;
+    max-width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  .modal input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  
+  .modal-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .modal-actions button {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .modal-actions button:first-child {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .modal-actions button:last-child {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }

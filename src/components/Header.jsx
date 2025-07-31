@@ -15,10 +15,10 @@ export default function Header() {
             alt="Avatar"
             className="avatar"
           /> */}
-          <button className="logout-button">
-            <FiLogOut size={18} />
+          {/* <button className="logout-button"> */}
+            {/* <FiLogOut size={18} /> */}
             <Button />
-          </button>
+          {/* </button> */}
         </div>
       </div>
     </header>

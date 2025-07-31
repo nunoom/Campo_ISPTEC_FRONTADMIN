@@ -7,8 +7,8 @@ import LogIn from './components/Login_Aurora';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <LogIn/>
-    {/* <App /> */}
+    {/* <LogIn/> */}
+    <App />
     {/* <Aurora /> */}
     {/* <Form /> */}
   </React.StrictMode>

@@ -1,11 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
+import { FiLogOut } from 'react-icons/fi';
+import '@fontsource/poppins/400.css'; 
 
 const Button = () => {
   return (
     <StyledWrapper>
       <button>
-        <span>Sair</span>
+        <FiLogOut size={18} />
+        <span >Sair</span>
       </button>
     </StyledWrapper>
   );
@@ -13,13 +16,14 @@ const Button = () => {
 
 const StyledWrapper = styled.div`
   button {
-    font-family: poppins;
+    font-family: 'Poppins', sans-serif;
     position: relative;
     margin: 0;
     padding: 0.8em 1em;
     outline: none;
     text-decoration: none;
     display: flex;
+    justify-content: space-around;
     justify-content: center;
     align-items: center;
     cursor: pointer;
@@ -35,6 +39,10 @@ const StyledWrapper = styled.div`
     overflow: hidden;
     transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
   }
+  span{
+    margin-left: 10px
+  }
+
 
   button:hover {
     animation: sh0 0.5s ease-in-out both;

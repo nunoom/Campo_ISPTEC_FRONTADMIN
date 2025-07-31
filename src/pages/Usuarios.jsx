@@ -12,6 +12,8 @@ const Usuarios = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [usuarios, setUsuarios] = useState([]);
   const [mostrarModal, setMostrarModal] = useState(false);
+  const [usuarioSelecionado, setUsuarioSelecionado] = useState(null);
+
   const [novoUsuario, setNovoUsuario] = useState({
     nomeCompleto: '',
     //email: '',
@@ -39,24 +41,35 @@ const Usuarios = () => {
           });
       };
   
+      const handleEditClick = (usuario) => {
+        setUsuarioSelecionado(usuario);
+        setMostrarModal(true);
+      };
+      const handleUpdateUsuario = () => {
+        if (!usuarioSelecionado) return;
+    
+        axios
+          .put(
+            `https://campo-isptec.onrender.com/api/admin/update/${usuarioSelecionado.id}`,
+            usuarioSelecionado
+          )
+          .then((response) => {
+            console.log("Usuário atualizado:", response.data);
+            setUsuarios((prev) =>
+              prev.map((u) =>
+                u.id === usuarioSelecionado.id ? response.data : u
+              )
+            );
+            setMostrarModal(false);
+            setUsuarioSelecionado(null);
+          })
+          .catch((error) => {
+            console.error("Erro ao atualizar usuário:", error);
+            alert("Erro ao atualizar usuário.");
+          });
+      };
   
-//   useEffect(() => {
-//     axios.get('https://9a7fc5ee0eff.ngrok-free.app/api/getUsers')
-//       .then(response => {
-//         console.log('Usuários recebidos:', response.data);
-//         setUsuarios(response.data);
-//         if (Array.isArray(response.data)) {
-//             setUsuarios(response.data);
-//           } else {
-//             console.error("Resposta inesperada:", response.data);
-//             setUsuarios([]); // evita quebrar o código
-//           }
-//         //setUsuarios(response.data);
-//       })
-//       .catch(error => {
-//         console.error('Erro ao buscar usuários:', error);
-//       });
-//   }, []);
+
 useEffect(() => {
     axios.get('https://campo-isptec.onrender.com/api/admin/getUsers')
       .then(response => {
@@ -179,15 +192,75 @@ useEffect(() => {
         <td>{usuario.fullemail}</td>
         <td>{usuario.numeroEstudante}</td>
         <td>
-          <button>Editar</button>
-          <button>Excluir</button>
+          <button className="btn-editar" onClick={() => 
+            
+            handleEditClick(usuario)}>Editar</button>
+          <button className="btn-remover">Excluir</button>
         </td>
       </tr>
     )}
   />
 </tbody>
 </table>
+{mostrarModal && usuarioSelecionado && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <h2>Editar Usuário</h2>
 
+            <input
+              type="text"
+              value={usuarioSelecionado.nomeCompleto}
+              onChange={(e) =>
+                setUsuarioSelecionado({
+                  ...usuarioSelecionado,
+                  nomeCompleto: e.target.value,
+                })
+              }
+              placeholder="Nome Completo"
+            />
+
+            <input
+              type="email"
+              value={usuarioSelecionado.fullemail}
+              onChange={(e) =>
+                setUsuarioSelecionado({
+                  ...usuarioSelecionado,
+                  fullemail: e.target.value,
+                })
+              }
+              placeholder="Email"
+            />
+
+            <input
+              type="text"
+              value={usuarioSelecionado.numeroEstudante}
+              onChange={(e) =>
+                setUsuarioSelecionado({
+                  ...usuarioSelecionado,
+                  numeroEstudante: e.target.value,
+                })
+              }
+              placeholder="Número de Estudante"
+            />
+            <input
+              type="text"
+              value={usuarioSelecionado.contacto}
+              onChange={(e) =>
+                setUsuarioSelecionado({
+                  ...usuarioSelecionado,
+                  contacto: e.target.value,
+                })
+              }
+              placeholder="Contacto"
+            />
+
+            <div className="modal-actions">
+              <button onClick={handleUpdateUsuario}>Salvar</button>
+              <button onClick={() => setMostrarModal(false)}>Cancelar</button>
+            </div>
+          </div>
+        </div>
+      )}
 
   
 
