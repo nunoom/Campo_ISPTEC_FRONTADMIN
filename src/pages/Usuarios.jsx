@@ -16,7 +16,7 @@ const Usuarios = () => {
 
   const [novoUsuario, setNovoUsuario] = useState({
     nomeCompleto: '',
-    //email: '',
+    fullemail: '',
     senha: '',
     numeroEstudante: '',
     contacto: ''
@@ -47,11 +47,19 @@ const Usuarios = () => {
       };
       const handleUpdateUsuario = () => {
         if (!usuarioSelecionado) return;
+        const token = localStorage.getItem("token");
     
+        //http://172.17.0.1
+        // /https://campo-isptec.onrender.com
         axios
           .put(
-            `https://campo-isptec.onrender.com/api/admin/update/${usuarioSelecionado.id}`,
-            usuarioSelecionado
+            `http://192.168.122.1:3000/api/admin/updateUser/${usuarioSelecionado.id}`,
+            usuarioSelecionado,
+            {
+        headers: {
+        Authorization: `Bearer ${token}`, // se a API espera Bearer
+        },
+          }
           )
           .then((response) => {
             console.log("Usuário atualizado:", response.data);
