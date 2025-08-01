@@ -15,7 +15,7 @@ const Form = () => {
     //https://campo-isptec.onrender.com
     try {
       const response = await axios.post(
-        'http://192.168.122.1:3000/api/login',
+        'https://campo-isptec.onrender.com/api/login',
         { numeroEstudante, senha: senha }
       );
 

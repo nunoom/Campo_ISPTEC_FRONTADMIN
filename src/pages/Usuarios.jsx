@@ -12,6 +12,7 @@ const Usuarios = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [usuarios, setUsuarios] = useState([]);
   const [mostrarModal, setMostrarModal] = useState(false);
+  const [mostrarModalNewUser, setMostrarModalNewUser] = useState(false);
   const [usuarioSelecionado, setUsuarioSelecionado] = useState(null);
 
   const [novoUsuario, setNovoUsuario] = useState({
@@ -33,7 +34,7 @@ const Usuarios = () => {
             console.log('Usuário salvo com sucesso:', response.data);
             setUsuarios(prev => [...prev, response.data]); // atualiza a tabela
             setNovoUsuario({ nome: '', password: '', numeroEstudante: '', contacto: '' }); // limpa os campos
-            setMostrarModal(false); // fecha o modal
+            setMostrarModalNewUser(false); // fecha o modal
           })
         .catch(error => {
             console.error('Erro ao salvar usuário:', error);
@@ -53,7 +54,7 @@ const Usuarios = () => {
         // /https://campo-isptec.onrender.com
         axios
           .put(
-            `http://192.168.122.1:3000/api/admin/updateUser/${usuarioSelecionado.id}`,
+            `https://campo-isptec.onrender.com/api/admin/updateUser/${usuarioSelecionado.id}`,
             usuarioSelecionado,
             {
         headers: {
@@ -115,10 +116,10 @@ useEffect(() => {
     <div className="usuarios-container">
       <div className="usuarios-header">
         <h2>Gestão de Usuários</h2>
-        <button className="btn-add" onClick={() => setMostrarModal(true)}>+ Novo Usuário</button>
+        <button className="btn-add" onClick={() => setMostrarModalNewUser(true)}>+ Novo Usuário</button>
 
       </div>
-      {mostrarModal && (
+      {mostrarModalNewUser && (
       <div className="modal-overlay">
         <div className="modal-content">
           <h3>Criar Novo Usuário</h3>
@@ -128,12 +129,7 @@ useEffect(() => {
             value={novoUsuario.nome}
             onChange={(e) => setNovoUsuario({ ...novoUsuario, nomeCompleto: e.target.value })}
           />
-          {/* <input
-            type="email"
-            placeholder="Email"
-            value={novoUsuario.email}
-            onChange={(e) => setNovoUsuario({ ...novoUsuario, email: e.target.value })}
-          /> */}
+          
           <input
             type="password"
             placeholder="Password (ex: admin, comum...)"
@@ -152,18 +148,10 @@ useEffect(() => {
             value={novoUsuario.contacto}
             onChange={(e) => setNovoUsuario({ ...novoUsuario, contacto: e.target.value })}
           />
-          {/* <select
-            value={novoUsuario.tipo}
-            onChange={(e) => setNovoUsuario({ ...novoUsuario, tipo: e.target.value })}
-            >
-            <option value="">Selecione o tipo</option>
-            <option value="Administrador">Administrador</option>
-            <option value="Técnico">Técnico</option>
-          </select> */}
 
           <div className="modal-buttons">
             <button onClick={handleSalvarUsuario}>Salvar</button>
-            <button onClick={() => setMostrarModal(false)}>Cancelar</button>
+            <button onClick={() => setMostrarModalNewUser(false)}>Cancelar</button>
           </div>
         </div>
       </div>
